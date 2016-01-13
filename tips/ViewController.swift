@@ -23,6 +23,10 @@ class ViewController: UIViewController {
         totalLabel.text = "$0.00"
         
     }
+    
+    override func viewWillAppear(animated: Bool) {
+        navigationItem.title = "Tip Calculator"
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
