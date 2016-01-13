@@ -26,6 +26,23 @@ class ViewController: UIViewController {
     
     override func viewWillAppear(animated: Bool) {
         navigationItem.title = "Tip Calculator"
+        super.viewWillAppear(animated)
+        print("view will appear")
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        print("view did appear")
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
+        print("Will disappear")
+    }
+    
+    override func viewDidDisappear(animated: Bool) {
+        super.viewDidDisappear(animated)
+        print("Did disappear")
     }
 
     override func didReceiveMemoryWarning() {

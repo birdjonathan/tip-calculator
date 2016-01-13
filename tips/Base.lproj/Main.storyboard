@@ -81,7 +81,13 @@
                             <outletCollection property="gestureRecognizers" destination="n0Q-Ao-PbZ" appends="YES" id="3c2-JQ-wFA"/>
                         </connections>
                     </view>
-                    <navigationItem key="navigationItem" id="Od5-Wd-8X2"/>
+                    <navigationItem key="navigationItem" id="Od5-Wd-8X2">
+                        <barButtonItem key="rightBarButtonItem" title="Settings" id="NQv-LZ-26X">
+                            <connections>
+                                <segue destination="ZFm-yc-9Zt" kind="modal" id="D9N-0Y-fbF"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="billField" destination="nB3-n0-9kw" id="ISJ-7Q-vuM"/>
                         <outlet property="tipControl" destination="uzj-ZW-HgW" id="m3T-kh-OAa"/>
@@ -97,6 +103,62 @@
                 </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="757" y="380"/>
+        </scene>
+        <!--Settings View Controller-->
+        <scene sceneID="es7-vL-neI">
+            <objects>
+                <viewController id="ZFm-yc-9Zt" customClass="SettingsViewController" customModule="tips" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="u1h-vJ-Xdm">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="L0j-Kk-84J">
+                                <rect key="frame" x="20" y="240" width="42" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tip Percentage" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="jf7-e4-1pz">
+                                <rect key="frame" x="20" y="157" width="116" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="right" minimumFontSize="17" id="aSq-iQ-E03">
+                                <rect key="frame" x="188" y="153" width="122" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Set the default tip percentage for the calculator." textAlignment="justified" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="9WU-xh-Ow0">
+                                <rect key="frame" x="20" y="61" width="280" height="84"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <navigationBar contentMode="scaleToFill" id="xSt-QS-hqA">
+                                <rect key="frame" x="0.0" y="12" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <items>
+                                    <navigationItem title="Settings" id="d3a-IB-jnA">
+                                        <barButtonItem key="rightBarButtonItem" title="Done" id="8ze-63-UeI">
+                                            <connections>
+                                                <action selector="DismissSettingsModal:" destination="ZFm-yc-9Zt" id="fso-ia-fov"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="oki-EU-1ym" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1165" y="380"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="9RL-8E-7fv">
