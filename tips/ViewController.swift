@@ -21,7 +21,6 @@ class ViewController: UIViewController {
         billField.clearsOnBeginEditing = true
         tipLabel.text = "$0.00"
         totalLabel.text = "$0.00"
-        
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -51,11 +50,16 @@ class ViewController: UIViewController {
     }
 
     @IBAction func onEditingChanged(sender: AnyObject) {
-        let tipPercentages = [0.18, 0.2, 0.22]
-        let tipPercentage = tipPercentages[tipControl.selectedSegmentIndex]
+        let defaults = NSUserDefaults.standardUserDefaults()
+        let initialTipInt = defaults.integerForKey("defaultTip")
+        let initialTipPercentage = Double(initialTipInt)/100
+        print(initialTipPercentage)
+        //let tipPercentages = [0.18, 0.2, 0.22]
+        //let tipPercentage = tipPercentages[tipControl.selectedSegmentIndex]
         let billAmount = NSString(string: billField.text!).doubleValue
-     
-        let tip = billAmount * tipPercentage
+        //let tip = billAmount * tipPercentage
+        let tip = billAmount * initialTipPercentage
+       // let tip = billAmount * tipPercentage
         let total = billAmount + tip
         tipLabel.text = "$\(tip)"
         totalLabel.text = "$\(total)"
@@ -66,6 +70,15 @@ class ViewController: UIViewController {
         
     }
     
+    @IBAction func ChangeTipPercentage(sender: AnyObject) {
+        let defaults = NSUserDefaults.standardUserDefaults()
+        let tipPercentages = [18, 20, 22]
+        let tipPercentage = tipPercentages[tipControl.selectedSegmentIndex]
+        defaults.setInteger(tipPercentage, forKey: "defaultTip")
+        print(tipPercentage)
+        defaults.synchronize()
+ 
+    }
     @IBAction func onTap(sender: AnyObject) {
         
         view.endEditing(true)

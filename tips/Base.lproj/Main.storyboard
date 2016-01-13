@@ -62,7 +62,7 @@
                                     <segment title="22%"/>
                                 </segments>
                                 <connections>
-                                    <action selector="onEditingChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="IW1-BB-okR"/>
+                                    <action selector="ChangeTipPercentage:" destination="BYZ-38-t0r" eventType="valueChanged" id="dga-th-2Ov"/>
                                 </connections>
                             </segmentedControl>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="right" minimumFontSize="17" id="nB3-n0-9kw">
@@ -126,12 +126,6 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="right" minimumFontSize="17" id="aSq-iQ-E03">
-                                <rect key="frame" x="188" y="153" width="122" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Set the default tip percentage for the calculator." textAlignment="justified" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="9WU-xh-Ow0">
                                 <rect key="frame" x="20" y="61" width="280" height="84"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -152,11 +146,42 @@
                                     </navigationItem>
                                 </items>
                             </navigationBar>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="T69-qG-eli">
+                                <rect key="frame" x="22" y="338" width="42" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Magic"/>
+                                <connections>
+                                    <action selector="MagicRecall:" destination="ZFm-yc-9Zt" eventType="touchUpInside" id="4ah-wn-qHT"/>
+                                </connections>
+                            </button>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="right" minimumFontSize="17" id="aSq-iQ-E03">
+                                <rect key="frame" x="178" y="153" width="122" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
+                                <connections>
+                                    <action selector="OnEditingChanged:" destination="ZFm-yc-9Zt" eventType="editingChanged" id="QzW-Lr-G3g"/>
+                                    <action selector="OnEditingChanged:" destination="ZFm-yc-9Zt" eventType="editingDidEnd" id="REb-Vg-q8K"/>
+                                </connections>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <gestureRecognizers/>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="bV9-Z0-FeT" appends="YES" id="rSb-wS-PI2"/>
+                        </connections>
                     </view>
+                    <connections>
+                        <outlet property="Magic" destination="T69-qG-eli" id="nlq-Oz-Xg2"/>
+                        <outlet property="tipPercentageField" destination="aSq-iQ-E03" id="V84-s2-eH0"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oki-EU-1ym" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="bV9-Z0-FeT">
+                    <connections>
+                        <action selector="onTap:" destination="ZFm-yc-9Zt" id="lfX-M4-wQb"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="1165" y="380"/>
         </scene>
