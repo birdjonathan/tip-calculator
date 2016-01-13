@@ -27,6 +27,24 @@ class ViewController: UIViewController {
         navigationItem.title = "Tip Calculator"
         super.viewWillAppear(animated)
         print("view will appear")
+        let defaults = NSUserDefaults.standardUserDefaults()
+        let initialTipInt = defaults.integerForKey("defaultTip")
+        let initialTipPercentage = Double(initialTipInt)/100
+        print(initialTipPercentage)
+        //let tipPercentages = [0.18, 0.2, 0.22]
+        //let tipPercentage = tipPercentages[tipControl.selectedSegmentIndex]
+        let billAmount = NSString(string: billField.text!).doubleValue
+        //let tip = billAmount * tipPercentage
+        let tip = billAmount * initialTipPercentage
+        // let tip = billAmount * tipPercentage
+        let total = billAmount + tip
+        tipLabel.text = "$\(tip)"
+        totalLabel.text = "$\(total)"
+        
+        tipLabel.text = String(format: "$%.2f", tip)
+        totalLabel.text = String(format: "$%.2f", total)
+
+        
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -77,6 +95,20 @@ class ViewController: UIViewController {
         defaults.setInteger(tipPercentage, forKey: "defaultTip")
         print(tipPercentage)
         defaults.synchronize()
+        // Repeating myself
+        let initialTipPercentage = Double(tipPercentage)/100
+        print(initialTipPercentage)
+        let billAmount = NSString(string: billField.text!).doubleValue
+        //let tip = billAmount * tipPercentage
+        let tip = billAmount * initialTipPercentage
+        // let tip = billAmount * tipPercentage
+        let total = billAmount + tip
+        tipLabel.text = "$\(tip)"
+        totalLabel.text = "$\(total)"
+        
+        tipLabel.text = String(format: "$%.2f", tip)
+        totalLabel.text = String(format: "$%.2f", total)
+
  
     }
     @IBAction func onTap(sender: AnyObject) {

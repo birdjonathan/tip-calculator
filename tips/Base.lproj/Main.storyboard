@@ -63,6 +63,7 @@
                                 </segments>
                                 <connections>
                                     <action selector="ChangeTipPercentage:" destination="BYZ-38-t0r" eventType="valueChanged" id="dga-th-2Ov"/>
+                                    <action selector="onEditingChanged:" destination="BYZ-38-t0r" eventType="editingChanged" id="ir6-hD-Hik"/>
                                 </connections>
                             </segmentedControl>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="right" minimumFontSize="17" id="nB3-n0-9kw">
