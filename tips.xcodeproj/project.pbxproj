@@ -14,6 +14,8 @@
 		D789F70B1C44C427001869AD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D789F7091C44C427001869AD /* LaunchScreen.storyboard */; };
 		D789F7161C44C427001869AD /* tipsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D789F7151C44C427001869AD /* tipsTests.swift */; };
 		D79199DB1C4638B7002D4AC4 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D79199DA1C4638B7002D4AC4 /* SettingsViewController.swift */; };
+		D7F63F6E1C4856E100B8C21B /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D7F63F6D1C4856E100B8C21B /* Default@2x.png */; };
+		D7F63F721C485BC900B8C21B /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D7F63F711C485BC900B8C21B /* Launch Screen.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,6 +40,8 @@
 		D789F7151C44C427001869AD /* tipsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tipsTests.swift; sourceTree = "<group>"; };
 		D789F7171C44C427001869AD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D79199DA1C4638B7002D4AC4 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		D7F63F6D1C4856E100B8C21B /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default@2x.png"; path = "../../../../Desktop/Default@2x.png"; sourceTree = "<group>"; };
+		D7F63F711C485BC900B8C21B /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,6 +65,7 @@
 		D789F6F41C44C427001869AD = {
 			isa = PBXGroup;
 			children = (
+				D7F63F711C485BC900B8C21B /* Launch Screen.storyboard */,
 				D789F6FF1C44C427001869AD /* tips */,
 				D789F7141C44C427001869AD /* tipsTests */,
 				D789F6FE1C44C427001869AD /* Products */,
@@ -83,6 +88,7 @@
 				D789F7021C44C427001869AD /* ViewController.swift */,
 				D79199D91C46382F002D4AC4 /* View Controllers */,
 				D789F7041C44C427001869AD /* Main.storyboard */,
+				D7F63F6D1C4856E100B8C21B /* Default@2x.png */,
 				D789F7071C44C427001869AD /* Assets.xcassets */,
 				D789F7091C44C427001869AD /* LaunchScreen.storyboard */,
 				D789F70C1C44C427001869AD /* Info.plist */,
@@ -157,6 +163,7 @@
 				TargetAttributes = {
 					D789F6FC1C44C427001869AD = {
 						CreatedOnToolsVersion = 7.2;
+						DevelopmentTeam = E2PR4T2B49;
 					};
 					D789F7101C44C427001869AD = {
 						CreatedOnToolsVersion = 7.2;
@@ -188,8 +195,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D7F63F6E1C4856E100B8C21B /* Default@2x.png in Resources */,
 				D789F70B1C44C427001869AD /* LaunchScreen.storyboard in Resources */,
 				D789F7081C44C427001869AD /* Assets.xcassets in Resources */,
+				D7F63F721C485BC900B8C21B /* Launch Screen.storyboard in Resources */,
 				D789F7061C44C427001869AD /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -337,10 +346,15 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = tips/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.birdjonathan.tips;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -348,10 +362,15 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = tips/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.birdjonathan.tips;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};

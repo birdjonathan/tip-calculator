@@ -3,7 +3,7 @@
 //  tips
 //
 //  Created by dev on 1/12/16.
-//  Copyright © 2016 birdjonathan. All rights reserved.
+//  Copyright © 2016 Jonathan Bird. All rights reserved.
 //
 
 import UIKit
@@ -11,17 +11,19 @@ import UIKit
 class SettingsViewController: UIViewController {
 
     @IBOutlet weak var tipPercentageField: UITextField!
-    
+    @IBOutlet weak var salesTaxField: UITextField!
     @IBOutlet weak var Magic: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.view.backgroundColor = UIColor.cyanColor()
         let defaults = NSUserDefaults.standardUserDefaults()
-        let myNumber = defaults.integerForKey("defaultTip")
-        print(myNumber)
-        tipPercentageField.text = "\(myNumber)%"
+        let tipNumber = defaults.integerForKey("defaultTip")
+        let salesNumber = defaults.integerForKey("defaultSalesTax")
+        tipPercentageField.text = "\(tipNumber)%"
         tipPercentageField.clearsOnBeginEditing = true
-       
+        salesTaxField.text = "\(salesNumber)%"
+        salesTaxField.clearsOnBeginEditing = true
 
         // Do any additional setup after loading the view.
     }
@@ -31,11 +33,6 @@ class SettingsViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    @IBAction func MagicRecall(sender: AnyObject) {
-        let defaults = NSUserDefaults.standardUserDefaults()
-        let myNumber = defaults.integerForKey("defaultTip")
-        print(myNumber)
-    }
     
     @IBAction func DismissSettingsModal(sender: AnyObject) {
       self.dismissViewControllerAnimated(true, completion: nil)
@@ -43,26 +40,18 @@ class SettingsViewController: UIViewController {
     
     @IBAction func OnEditingChanged(sender: AnyObject) {
         let defaultTipPercentage = NSString(string: tipPercentageField.text!).integerValue
-        
+        let defaultSalesTaxRate = NSString(string: salesTaxField.text!).integerValue
         let defaults = NSUserDefaults.standardUserDefaults()
-        defaults.setInteger(defaultTipPercentage, forKey: "defaultTip")
         
+        //Sets
+        defaults.setInteger(defaultTipPercentage, forKey: "defaultTip")
+        defaults.setInteger(defaultSalesTaxRate, forKey: "defaultSalesTax")
         defaults.synchronize()
         
-        
-        //tipPercentageField.text = "%\(defaultTipPercentage)"
-//        let tip = billAmount * tipPercentage
-//        let total = billAmount + tip
-//        tipLabel.text = "$\(tip)"
-//        totalLabel.text = "$\(total)"
-//        
-//        tipLabel.text = String(format: "$%.2f", tip)
-//        totalLabel.text = String(format: "$%.2f", total)
     }
     
-    
+    // Closes modals on tap
     @IBAction func onTap(sender: AnyObject) {
-        
         view.endEditing(true)
     }
 
