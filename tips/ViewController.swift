@@ -192,6 +192,9 @@ class ViewController: UIViewController {
         totalLabel.text = String(format: "$%.2f", finalTotal)
         splitLabel.text = String(format: "$%.2f", splitAmount)
         
+        //Save the bill amount to memory
+        setBillAmount()
+        
     }
 
 }
