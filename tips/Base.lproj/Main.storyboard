@@ -51,7 +51,7 @@
                             <view contentMode="scaleToFill" id="odO-3G-ltS">
                                 <rect key="frame" x="20" y="247" width="269" height="7"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.35920336478168913" green="0.043748542220832576" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" name="selectedMenuItemColor" catalog="System" colorSpace="catalog"/>
                             </view>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="right" minimumFontSize="17" id="nB3-n0-9kw">
                                 <rect key="frame" x="156" y="108" width="133" height="30"/>

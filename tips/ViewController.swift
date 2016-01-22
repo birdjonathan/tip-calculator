@@ -121,12 +121,19 @@ class ViewController: UIViewController {
     @IBAction func changeNumberPayers(sender: AnyObject) {
         let totalNumberOfPayers = Double(numberOfPayersControl.value)
         numberOfPayersLabel.text = "\(Int(numberOfPayersControl.value))"
-        let tipAmount = NSString(string: tipLabel.text!)
-        let tipAmountDouble = Double(tipAmount .substringFromIndex(1))
-        let tipSplit = tipAmountDouble! / totalNumberOfPayers
-        splitLabel.text = "$\(tipSplit)"
-        splitLabel.text = String(format: "$%.2f", tipSplit)
-        
+        let tipAmount = String(tipLabel.text!).characters.dropFirst()
+        let newTipStr = String(tipAmount)
+        let numberFormatter = NSNumberFormatter()
+        numberFormatter.numberStyle = NSNumberFormatterStyle.DecimalStyle
+        numberFormatter.minimumFractionDigits = 2
+        numberFormatter.maximumFractionDigits = 2
+        let tipNumber = numberFormatter.numberFromString(newTipStr)
+        let tipAmountDouble = Double(tipNumber!)
+        let tipSplit = tipAmountDouble / totalNumberOfPayers
+       
+        let tipStr = numberFormatter.stringFromNumber(tipSplit)!
+        print(tipStr, "This is my formatted tip")
+        splitLabel.text = "$\(tipStr)"
     }
     
     @IBAction func onTap(sender: AnyObject) {
@@ -191,17 +198,27 @@ class ViewController: UIViewController {
         let finalTotal = checkTotal + tip
         let splitAmount = tip / numberOfPayers
         
+        let numberFormatter = NSNumberFormatter()
+        numberFormatter.numberStyle = NSNumberFormatterStyle.DecimalStyle
+        numberFormatter.minimumFractionDigits = 2
+        numberFormatter.maximumFractionDigits = 2
+        let finalTotalStr = numberFormatter.stringFromNumber(finalTotal)!
+        let splitAmountStr = numberFormatter.stringFromNumber(splitAmount)!
+        let taxStr = numberFormatter.stringFromNumber(tax)!
+        let tipStr = numberFormatter.stringFromNumber(tip)!
+        print(taxStr, "This is my formatted tax")
+    
         // Sets the correct value for all the labels
-        tipLabel.text = "$\(tip)"
-        totalLabel.text = "$\(finalTotal)"
-        splitLabel.text = "$\(splitAmount)"
-        taxLabel.text = "$\(tax)"
+        tipLabel.text = "$\(tipStr)"
+        totalLabel.text = "$\(finalTotalStr)"
+        splitLabel.text = "$\(splitAmountStr)"
+        taxLabel.text = "$\(taxStr)"
         
         // Formats the labels to two decimal places
-        tipLabel.text = String(format: "$%.2f", tip)
-        taxLabel.text = String(format: "$%.2f", tax)
-        totalLabel.text = String(format: "$%.2f", finalTotal)
-        splitLabel.text = String(format: "$%.2f", splitAmount)
+//        tipLabel.text = String(format: "$%.2f", tip)
+//        taxLabel.text = String(format: "$%.2f", tax)
+//        totalLabel.text = String(format: "$%.2f", finalTotal)
+//        splitLabel.text = String(format: "$%.2f", splitAmount)
         
         //Save the bill amount to memory
         setBillAmount()
