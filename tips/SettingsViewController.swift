@@ -16,7 +16,7 @@ class SettingsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = UIColor.cyanColor()
+        self.view.backgroundColor = UIColor.whiteColor()
         let defaults = NSUserDefaults.standardUserDefaults()
         let tipNumber = defaults.integerForKey("defaultTip")
         let salesNumber = defaults.integerForKey("defaultSalesTax")
@@ -28,6 +28,15 @@ class SettingsViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
 
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        UIView.animateWithDuration(0.5, animations: {
+            self.view.backgroundColor = UIColor.cyanColor()
+        })
+    }
+
+    
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

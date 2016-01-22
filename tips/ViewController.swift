@@ -26,6 +26,7 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         // Do any additional setup after loading the view, typically from a nib.
         billField.text = "Enter amount"
         billField.clearsOnBeginEditing = true
@@ -47,6 +48,7 @@ class ViewController: UIViewController {
     override func viewWillAppear(animated: Bool) {
         navigationItem.title = "Tip Calculator"
         super.viewWillAppear(animated)
+                self.view.backgroundColor = UIColor.cyanColor()
         print("View will appear")
         setInitialTipAndTax()
         print("set tax and tip")
@@ -68,7 +70,16 @@ class ViewController: UIViewController {
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        self.view.backgroundColor = UIColor.cyanColor()
+        billField.center.x -= view.bounds.width
+        totalLabel.center.x -= view.bounds.width
+        UIView.animateWithDuration(0.5, animations: {
+            self.view.backgroundColor = UIColor.whiteColor()
+            self.billField.center.x += self.view.bounds.width
+        })
+        
+        UIView.animateWithDuration(0.5, delay: 0.2, options: [], animations:{
+            self.totalLabel.center.x += self.view.bounds.width
+            }, completion:nil)
         print("view did appear")
     }
     
