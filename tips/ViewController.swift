@@ -29,7 +29,6 @@ class ViewController: UIViewController {
         
         // Do any additional setup after loading the view, typically from a nib.
         billField.text = "Enter amount"
-        billField.clearsOnBeginEditing = true
        
         // Some default setting for the number of payees control
         numberOfPayersLabel.text = "1"
@@ -43,6 +42,10 @@ class ViewController: UIViewController {
             setStartMoment()
             print("set first start moment")
         }
+        // Pop up keyboard automatically
+        self.billField.becomeFirstResponder()
+        billField.clearsOnBeginEditing = false
+        
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -81,6 +84,7 @@ class ViewController: UIViewController {
             self.totalLabel.center.x += self.view.bounds.width
             }, completion:nil)
         print("view did appear")
+        self.billField.becomeFirstResponder()
     }
     
     override func viewWillDisappear(animated: Bool) {
@@ -115,6 +119,7 @@ class ViewController: UIViewController {
         defaults.synchronize()
         
         updateTipCalculator()
+        self.billField.becomeFirstResponder()
 
     }
     
@@ -127,13 +132,12 @@ class ViewController: UIViewController {
         numberFormatter.numberStyle = NSNumberFormatterStyle.DecimalStyle
         numberFormatter.minimumFractionDigits = 2
         numberFormatter.maximumFractionDigits = 2
-        let tipNumber = numberFormatter.numberFromString(newTipStr)
-        let tipAmountDouble = Double(tipNumber!)
-        let tipSplit = tipAmountDouble / totalNumberOfPayers
-       
+        let tipAmountDouble = numberFormatter.numberFromString(newTipStr)?.doubleValue
+        let tipSplit = tipAmountDouble! / totalNumberOfPayers
+        numberFormatter.numberStyle = .CurrencyStyle
         let tipStr = numberFormatter.stringFromNumber(tipSplit)!
         print(tipStr, "This is my formatted tip")
-        splitLabel.text = "$\(tipStr)"
+        splitLabel.text = "\(tipStr)"
     }
     
     @IBAction func onTap(sender: AnyObject) {
@@ -199,9 +203,11 @@ class ViewController: UIViewController {
         let splitAmount = tip / numberOfPayers
         
         let numberFormatter = NSNumberFormatter()
-        numberFormatter.numberStyle = NSNumberFormatterStyle.DecimalStyle
-        numberFormatter.minimumFractionDigits = 2
-        numberFormatter.maximumFractionDigits = 2
+        numberFormatter.numberStyle = .CurrencyStyle
+//        numberFormatter.numberStyle = NSNumberFormatterStyle.DecimalStyle
+//        numberFormatter.minimumFractionDigits = 2
+//        numberFormatter.maximumFractionDigits = 2
+        
         let finalTotalStr = numberFormatter.stringFromNumber(finalTotal)!
         let splitAmountStr = numberFormatter.stringFromNumber(splitAmount)!
         let taxStr = numberFormatter.stringFromNumber(tax)!
@@ -209,10 +215,10 @@ class ViewController: UIViewController {
         print(taxStr, "This is my formatted tax")
     
         // Sets the correct value for all the labels
-        tipLabel.text = "$\(tipStr)"
-        totalLabel.text = "$\(finalTotalStr)"
-        splitLabel.text = "$\(splitAmountStr)"
-        taxLabel.text = "$\(taxStr)"
+        tipLabel.text = "\(tipStr)"
+        totalLabel.text = "\(finalTotalStr)"
+        splitLabel.text = "\(splitAmountStr)"
+        taxLabel.text = "\(taxStr)"
         
         // Formats the labels to two decimal places
 //        tipLabel.text = String(format: "$%.2f", tip)

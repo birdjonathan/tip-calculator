@@ -30,9 +30,9 @@ class SettingsViewController: UIViewController {
 
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        UIView.animateWithDuration(0.5, animations: {
+        UIView.animateWithDuration(0.5, delay: 0.4, options: [.CurveEaseOut, .Autoreverse], animations: {
             self.view.backgroundColor = UIColor.cyanColor()
-        })
+        }, completion: nil )
     }
 
     
