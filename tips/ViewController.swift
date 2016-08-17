@@ -52,9 +52,7 @@ class ViewController: UIViewController {
         navigationItem.title = "Tip Calculator"
         super.viewWillAppear(animated)
                 self.view.backgroundColor = UIColor.cyanColor()
-        print("View will appear")
         setInitialTipAndTax()
-        print("set tax and tip")
         // The following code will reset the calculator if ten minutes have passed
         let timeUsingApp = timeElapsed()
         if timeUsingApp < -600 {
@@ -83,7 +81,7 @@ class ViewController: UIViewController {
         UIView.animateWithDuration(0.5, delay: 0.2, options: [], animations:{
             self.totalLabel.center.x += self.view.bounds.width
             }, completion:nil)
-        print("view did appear")
+        
         self.billField.becomeFirstResponder()
     }
     
@@ -136,7 +134,6 @@ class ViewController: UIViewController {
         let tipSplit = tipAmountDouble! / totalNumberOfPayers
         numberFormatter.numberStyle = .CurrencyStyle
         let tipStr = numberFormatter.stringFromNumber(tipSplit)!
-        print(tipStr, "This is my formatted tip")
         splitLabel.text = "\(tipStr)"
     }
     
@@ -171,7 +168,7 @@ class ViewController: UIViewController {
     
     func updateBillAmount () {
         let defaults = NSUserDefaults.standardUserDefaults()
-        //return defaults.doubleForKey("billAmount")
+        
         billField.text = defaults.stringForKey("billAmount")
     }
     
@@ -194,7 +191,6 @@ class ViewController: UIViewController {
         let initialSalesTaxRate = Double(initialSalesTaxInt)/100
         // Gets number of people to split the tip among from UI label
         let numberOfPayers = NSString(string: numberOfPayersLabel.text!).doubleValue
-        //let billAmount = defaults.doubleForKey("billAmount")
         let billAmount =  NSString(string: billField.text!).doubleValue
         let tax = billAmount * initialSalesTaxRate
         let checkTotal = billAmount + tax
@@ -204,28 +200,15 @@ class ViewController: UIViewController {
         
         let numberFormatter = NSNumberFormatter()
         numberFormatter.numberStyle = .CurrencyStyle
-//        numberFormatter.numberStyle = NSNumberFormatterStyle.DecimalStyle
-//        numberFormatter.minimumFractionDigits = 2
-//        numberFormatter.maximumFractionDigits = 2
-        
         let finalTotalStr = numberFormatter.stringFromNumber(finalTotal)!
         let splitAmountStr = numberFormatter.stringFromNumber(splitAmount)!
         let taxStr = numberFormatter.stringFromNumber(tax)!
         let tipStr = numberFormatter.stringFromNumber(tip)!
-        print(taxStr, "This is my formatted tax")
-    
         // Sets the correct value for all the labels
         tipLabel.text = "\(tipStr)"
         totalLabel.text = "\(finalTotalStr)"
         splitLabel.text = "\(splitAmountStr)"
         taxLabel.text = "\(taxStr)"
-        
-        // Formats the labels to two decimal places
-//        tipLabel.text = String(format: "$%.2f", tip)
-//        taxLabel.text = String(format: "$%.2f", tax)
-//        totalLabel.text = String(format: "$%.2f", finalTotal)
-//        splitLabel.text = String(format: "$%.2f", splitAmount)
-        
         //Save the bill amount to memory
         setBillAmount()
         
