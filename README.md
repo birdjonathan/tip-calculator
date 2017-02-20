@@ -4,8 +4,6 @@
 
 by: **Jonathan Bird**
 
-Time spent: **9** hours spent in total
-
 ## Features
 
 * [X] User can enter a bill amount, choose a tip percentage, and see the tip and total values.
